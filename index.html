@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>GreenSpace</title>
+
+    <!-- LOCAL BOOTSTRAP 5 -->
+    <link rel="stylesheet"
+          href="bootstrap5/css/bootstrap.min.css">
+
+    <!-- LOCAL BOOTSTRAP ICONS -->
+    <link rel="stylesheet"
+          href="bootstrap-icons/bootstrap-icons.css">
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #26382b;
+            background-color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .btn {
+            border-radius: 10px;
+            padding: 11px 22px;
+            min-height: 45px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-success {
+            background-color: #198754;
+            border-color: #198754;
+        }
+
+        .btn-success:hover {
+            background-color: #146c43;
+            border-color: #146c43;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(25, 135, 84, 0.2);
+        }
+
+        .btn-outline-success {
+            color: #198754;
+            border: 2px solid #198754;
+            background-color: transparent;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #198754;
+            border-color: #198754;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(25, 135, 84, 0.2);
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            background-color: white;
+            border-bottom: 1px solid #dce8df;
+            padding: 15px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            color: #185c37 !important;
+            font-weight: bold;
+            font-size: 30px;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .navbar-brand i {
+            margin-right: 5px;
+        }
+
+        .navbar-collapse {
+            flex-grow: 0;
+        }
+
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-link {
+            color: #4d6656 !important;
+            padding: 8px 14px !important;
+            border-radius: 6px;
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .nav-link:hover {
+            color: #198754 !important;
+            background-color: #eef8f1;
+        }
+
+        /* MOBILE MENU BUTTON */
+
+        .navbar-toggler {
+            border: 1px solid #198754;
+            color: #198754;
+            padding: 6px 10px;
+            background-color: white;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.15rem rgba(25, 135, 84, 0.15);
+        }
+
+        .navbar-toggler i {
+            color: #198754;
+            font-size: 25px;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background-color: #eef8f1;
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            color: #164d2d;
+            font-weight: bold;
+            font-size: 60px;
+            text-align: center;
+        }
+
+        .hero-subtitle {
+            color: #164d2d;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-icon {
+            font-size: 150px;
+            color: #198754;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        .section-title {
+            color: #164d2d;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .feature-card {
+            border: 1px solid #dce8df;
+            border-radius: 15px;
+            padding: 30px;
+            height: 100%;
+            background-color: white;
+            text-align: center;
+            transition: 0.3s;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(25, 135, 84, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: #198754;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #164d2d;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* =========================
+           PRICING
+        ========================= */
+
+        .pricing-section {
+            background-color: #f4faf6;
+        }
+
+        .card {
+            border: 1px solid #dce8df;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(25, 135, 84, 0.12);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-body .btn {
+            margin-top: 10px;
+        }
+
+        .card-title {
+            color: #164d2d;
+            font-weight: bold;
+        }
+
+        .price {
+            color: #198754;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           TESTIMONIALS
+        ========================= */
+
+        .carousel {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0;
+        }
+
+        .carousel-item {
+            text-align: center;
+            padding: 30px 40px;
+            min-height: 250px;
+        }
+
+        .carousel-item i {
+            color: #198754;
+        }
+
+        .carousel-item h5 {
+            color: #164d2d;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .carousel-item p {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-section {
+            background-color: white;
+        }
+
+        .contact-box {
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #ffffff;
+            border: 1px solid #dce8df;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(25, 135, 84, 0.08);
+            box-sizing: border-box;
+        }
+
+        #contactForm {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #contactForm .form-label {
+            color: #164d2d;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        #contactForm .form-control {
+            width: 100%;
+            min-height: 48px;
+            border-radius: 10px;
+            border: 1px solid #cfe0d4;
+            padding: 12px 15px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        #contactForm textarea.form-control {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        #contactForm .form-control:focus {
+            border-color: #198754;
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+        }
+
+        #contactForm .mb-3 {
+            margin-bottom: 22px !important;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .contact-buttons .btn {
+            min-width: 150px;
+            min-height: 48px;
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #164d2d;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            text-align: center;
+        }
+
+
+        /* =========================
+           DARK MODE
+        ========================= */
+
+        body.dark-mode {
+            background-color: #18251d;
+            color: #e8f5ec;
+        }
+
+        body.dark-mode .navbar {
+            background-color: #1f3025;
+            border-bottom-color: #304b38;
+        }
+
+        body.dark-mode .nav-link {
+            color: #d5e5da !important;
+        }
+
+        body.dark-mode .nav-link:hover {
+            color: #b9e5c8 !important;
+            background-color: #304b38;
+        }
+
+        body.dark-mode .hero {
+            background-color: #203529;
+        }
+
+        body.dark-mode .hero h1,
+        body.dark-mode .section-title {
+            color: #b9e5c8;
+        }
+
+        body.dark-mode .hero p {
+            color: #c5d6cb;
+        }
+
+        body.dark-mode .feature-card,
+        body.dark-mode .card {
+            background-color: #24392b;
+            border-color: #385442;
+            color: white;
+        }
+
+        body.dark-mode .feature-card h3,
+        body.dark-mode .card-title {
+            color: #b9e5c8;
+        }
+
+        body.dark-mode .pricing-section {
+            background-color: #1c2d22;
+        }
+
+        body.dark-mode .text-muted {
+            color: #b7c9bd !important;
+        }
+
+        body.dark-mode .contact-section {
+            background-color: #18251d;
+        }
+
+        body.dark-mode .contact-box {
+            background-color: #24392b;
+            border-color: #385442;
+        }
+
+        body.dark-mode #contactForm .form-label {
+            color: #b9e5c8;
+        }
+
+        #themeButton {
+            display: none;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 991.98px) {
+
+            .navbar .container {
+                width: 100%;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .navbar-brand {
+                font-size: 28px;
+            }
+
+            /* FORCE MOBILE BUTTON TO SHOW */
+
+            .navbar-toggler {
+                display: block !important;
+            }
+
+            .navbar-collapse {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .navbar-nav {
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 2px;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                width: 100%;
+                text-align: center;
+                padding: 10px !important;
+            }
+
+            .hero {
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero-icon {
+                font-size: 120px;
+                margin-top: 30px;
+            }
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 767.98px) {
+
+            .navbar {
+                padding: 15px 0;
+            }
+
+            .navbar .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .navbar-brand {
+                font-size: 26px;
+            }
+
+            .navbar-toggler {
+                padding: 6px 10px;
+            }
+
+            .navbar-toggler i {
+                font-size: 24px;
+            }
+
+            .hero {
+                padding: 70px 20px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero-subtitle {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-icon {
+                font-size: 100px;
+                margin-top: 30px;
+            }
+
+            .hero .btn {
+                margin: 5px;
+            }
+
+            .feature-card {
+                padding: 30px 20px;
+            }
+
+            .card {
+                margin-bottom: 5px;
+            }
+
+            .carousel {
+                padding: 0 15px;
+            }
+
+            .carousel-item {
+                padding: 25px 15px;
+                min-height: 280px;
+            }
+
+            .contact-box {
+                padding: 25px 20px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .contact-buttons .btn {
+                width: 100%;
+            }
+        }
+
+
+        /* =========================
+           SMALL PHONES
+        ========================= */
+
+        @media (max-width: 575.98px) {
+
+            .navbar {
+                padding: 12px 0;
+            }
+
+            .navbar-brand {
+                font-size: 24px;
+            }
+
+            .navbar-toggler {
+                padding: 5px 9px;
+            }
+
+            .navbar-toggler i {
+                font-size: 22px;
+            }
+
+            .hero {
+                padding: 55px 15px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero-subtitle {
+                font-size: 20px;
+            }
+
+            .hero .btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+
+            .hero-icon {
+                font-size: 80px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .feature-card {
+                padding: 25px 18px;
+            }
+
+            .carousel {
+                padding: 0 10px;
+            }
+
+            .carousel-item {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#home">
+
+                <i class="bi bi-leaf-fill"></i>
+
+                GreenSpace
+
+            </a>
+
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <i class="bi bi-list"></i>
+
+            </button>
+
+
+            <div class="collapse navbar-collapse"
+                 id="navbarNav">
+
+                <ul class="navbar-nav">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           href="#home">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           href="#features">
+
+                            Features
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           href="#pricing">
+
+                            Pricing
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           href="#testimonials">
+
+                            Testimonials
+
+                        </a>
+
+                    </li>
+
+
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                           href="#contact">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section id="home"
+             class="hero">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-12 col-lg-8">
+
+                    <span class="badge text-bg-success mb-3">
+
+                        Simple. Smart. Green.
+
+                    </span>
+
+
+                    <h1>
+
+                        Welcome to GreenSpace
+
+                    </h1>
+
+
+                    <h3 class="hero-subtitle">
+
+                        A cleaner way to manage your digital space.
+
+                    </h3>
+
+
+                    <p class="lead mt-3">
+
+                        GreenSpace provides a simple and responsive
+                        platform designed to make your digital
+                        experience organized, efficient, and easy to use.
+
+                    </p>
+
+
+                    <div class="mt-4">
+
+                        <a href="#features"
+                           class="btn btn-success me-2">
+
+                            Explore Features
+
+                        </a>
+
+
+                        <a href="#pricing"
+                           class="btn btn-outline-success">
+
+                            View Pricing
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-12 col-lg-4">
+
+                    <i class="bi bi-leaf hero-icon"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section id="features"
+             class="py-5">
+
+        <div class="container">
+
+            <h2 class="section-title">
+
+                Our Features
+
+            </h2>
+
+
+            <div class="row g-4">
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <i class="bi bi-speedometer2 feature-icon"></i>
+
+                        <h3>
+
+                            Fast Performance
+
+                        </h3>
+
+                        <p>
+
+                            Enjoy a smooth and responsive experience
+                            designed for everyday use.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <i class="bi bi-phone feature-icon"></i>
+
+                        <h3>
+
+                            Responsive Design
+
+                        </h3>
+
+                        <p>
+
+                            Access GreenSpace comfortably on phones,
+                            tablets, laptops, and desktop screens.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="feature-card">
+
+                        <i class="bi bi-shield-check feature-icon"></i>
+
+                        <h3>
+
+                            Secure Platform
+
+                        </h3>
+
+                        <p>
+
+                            Built with security and reliability
+                            in mind to provide a safer experience.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PRICING
+    ========================== -->
+
+    <section id="pricing"
+             class="pricing-section py-5">
+
+        <div class="container">
+
+            <h2 class="section-title">
+
+                Choose Your Plan
+
+            </h2>
+
+
+            <div class="row g-4 justify-content-center">
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card text-center">
+
+                        <div class="card-body p-4">
+
+                            <h4 class="card-title">
+
+                                Starter
+
+                            </h4>
+
+
+                            <p class="price">
+
+                                ₱299
+
+                            </p>
+
+
+                            <p class="text-muted">
+
+                                Perfect for beginners.
+
+                            </p>
+
+
+                            <ul class="list-unstyled">
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Basic Features
+
+                                </li>
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Responsive Access
+
+                                </li>
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Email Support
+
+                                </li>
+
+                            </ul>
+
+
+                            <button class="btn btn-outline-success">
+
+                                Get Started
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card text-center">
+
+                        <div class="card-body p-4">
+
+                            <h4 class="card-title">
+
+                                Pro
+
+                            </h4>
+
+
+                            <p class="price">
+
+                                ₱599
+
+                            </p>
+
+
+                            <p class="text-muted">
+
+                                Great for growing users.
+
+                            </p>
+
+
+                            <ul class="list-unstyled">
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    All Starter Features
+
+                                </li>
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Advanced Tools
+
+                                </li>
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Priority Support
+
+                                </li>
+
+                            </ul>
+
+
+                            <button class="btn btn-success">
+
+                                Choose Pro
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card text-center">
+
+                        <div class="card-body p-4">
+
+                            <h4 class="card-title">
+
+                                Enterprise
+
+                            </h4>
+
+
+                            <p class="price">
+
+                                ₱999
+
+                            </p>
+
+
+                            <p class="text-muted">
+
+                                For larger organizations.
+
+                            </p>
+
+
+                            <ul class="list-unstyled">
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    All Pro Features
+
+                                </li>
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Custom Solutions
+
+                                </li>
+
+                                <li class="mb-2">
+
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+
+                                    Dedicated Support
+
+                                </li>
+
+                            </ul>
+
+
+                            <button class="btn btn-outline-success">
+
+                                Contact Us
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         TESTIMONIALS
+    ========================== -->
+
+    <section id="testimonials"
+             class="py-5">
+
+        <div class="container">
+
+            <h2 class="section-title">
+
+                What People Say
+
+            </h2>
+
+
+            <div id="testimonialCarousel"
+                 class="carousel slide"
+                 data-bs-interval="false">
+
+
+                <div class="carousel-inner">
+
+
+                    <div class="carousel-item active">
+
+                        <i class="bi bi-person-circle"
+                           style="font-size: 70px;">
+                        </i>
+
+
+                        <h5 class="mt-3">
+
+                            Ria Calingacion
+
+                        </h5>
+
+
+                        <p class="text-muted">
+
+                            Business Analytics Track
+
+                        </p>
+
+
+                        <p>
+
+                            "GreenSpace provides a clean,
+                            simple, and easy-to-use experience."
+
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="carousel-item">
+
+                        <i class="bi bi-person-circle"
+                           style="font-size: 70px;">
+                        </i>
+
+
+                        <h5 class="mt-3">
+
+                            Aldrin Clet
+
+                        </h5>
+
+
+                        <p class="text-muted">
+
+                            Network Technology Track
+
+                        </p>
+
+
+                        <p>
+
+                            "The responsive design makes the website
+                            easy to use on different devices."
+
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="carousel-item">
+
+                        <i class="bi bi-person-circle"
+                           style="font-size: 70px;">
+                        </i>
+
+
+                        <h5 class="mt-3">
+
+                            Maribeth De Lima
+
+                        </h5>
+
+
+                        <p class="text-muted">
+
+                            Web Development Student
+
+                        </p>
+
+
+                        <p>
+
+                            "The minimalist design is simple,
+                            professional, and easy to navigate."
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact"
+             class="contact-section py-5">
+
+        <div class="container">
+
+            <h2 class="section-title">
+
+                Contact Us
+
+            </h2>
+
+
+            <div class="contact-box">
+
+                <form id="contactForm">
+
+
+                    <div class="mb-3">
+
+                        <label for="name"
+                               class="form-label">
+
+                            Name
+
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               name="name"
+                               placeholder="Enter your name"
+                               required>
+
+                    </div>
+
+
+
+                    <div class="mb-3">
+
+                        <label for="email"
+                               class="form-label">
+
+                            Email
+
+                        </label>
+
+                        <input type="email"
+                               class="form-control"
+                               id="email"
+                               name="email"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+
+
+                    <div class="mb-3">
+
+                        <label for="subject"
+                               class="form-label">
+
+                            Subject
+
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               id="subject"
+                               name="subject"
+                               placeholder="Enter your subject"
+                               required>
+
+                    </div>
+
+
+
+                    <div class="mb-3">
+
+                        <label for="message"
+                               class="form-label">
+
+                            Message
+
+                        </label>
+
+                        <textarea class="form-control"
+                                  id="message"
+                                  name="message"
+                                  rows="5"
+                                  placeholder="Write your message"
+                                  required></textarea>
+
+                    </div>
+
+
+
+                    <div class="contact-buttons">
+
+                        <button type="submit"
+                                class="btn btn-success">
+
+                            Send Message
+
+                        </button>
+
+
+                        <button type="reset"
+                                class="btn btn-outline-success">
+
+                            Clear
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <p>
+
+                &copy; 2026 GreenSpace.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         LOCAL JAVASCRIPT
+    ========================== -->
+
+    <script src="sweetalert2/sweetalert2.all.min.js"></script>
+
+    <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+
+        /* DARK MODE */
+
+        const themeButton =
+            document.getElementById("themeButton");
+
+        if (themeButton) {
+
+            themeButton.addEventListener(
+                "click",
+                function () {
+
+                    document.body.classList.toggle(
+                        "dark-mode"
+                    );
+
+                    if (
+                        document.body.classList.contains(
+                            "dark-mode"
+                        )
+                    ) {
+
+                        themeButton.innerHTML =
+                            '<i class="bi bi-sun"></i> Light Mode';
+
+                    } else {
+
+                        themeButton.innerHTML =
+                            '<i class="bi bi-moon"></i> Dark Mode';
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* CONTACT FORM */
+
+        const contactForm =
+            document.getElementById("contactForm");
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                Swal.fire({
+
+                    title: "Message Sent!",
+
+                    text: "Thank you for contacting GreenSpace.",
+
+                    icon: "success",
+
+                    confirmButtonText: "OK"
+
+                });
+
+                contactForm.reset();
+
+            }
+        );
+
+
+
+        /* RIGHT CLICK SECURITY */
+
+        document.addEventListener(
+            "contextmenu",
+            function (event) {
+
+                event.preventDefault();
+
+                Swal.fire({
+
+                    title: "Notice",
+
+                    text: "Right-click is disabled on this page.",
+
+                    icon: "info",
+
+                    confirmButtonText: "OK"
+
+                });
+
+            }
+        );
+
+
+
+        /* KEYBOARD SECURITY */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+
+                    event.key === "F12" ||
+
+                    (
+                        event.ctrlKey &&
+                        event.shiftKey &&
+                        event.key === "I"
+                    )
+
+                ) {
+
+                    event.preventDefault();
+
+                    Swal.fire({
+
+                        title: "Notice",
+
+                        text: "This keyboard shortcut is disabled.",
+
+                        icon: "warning",
+
+                        confirmButtonText: "OK"
+
+                    });
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
